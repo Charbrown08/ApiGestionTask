@@ -57,14 +57,14 @@ class empleadosService {
   }
 
   async delete(id) {
-    const index = this.empleados.findIndex((item) => item.id === id);
+    const index = this.empleados.findIndex(item => item.id === id);
     if (index === -1) {
-      throw boom.notFound('Empleado no encontrado yy');
+      throw boom.notFound('product not found');
     }
     this.empleados.splice(index, 1);
-
     return { id };
   }
+
 }
 
 module.exports=empleadosService;

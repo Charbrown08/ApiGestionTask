@@ -66,7 +66,7 @@ class tareasService{
   }
 
   async delete(id){
-    const index=this.tareas.findIndex((item) => item.id === id);
+    const index =this.tareas.findIndex((item) => item.id === id);
     if(index === -1){
       throw boom.notFound('Id de tarea no encontrado');
 

@@ -15,9 +15,14 @@ const service = new empleadosService();
 
 //endpoint routes - finAll
 
-router.get('/', async (req, res) => {
-  const empleados = await service.findAll();
-  res.json(empleados);
+router.get('/', async (req, res,next) => {
+  try{
+    const empleados = await service.findAll();
+    res.json(empleados);
+  }catch(error){
+    next(error);
+  }
+
 });
 
 //endpoint routes - finOne
@@ -41,10 +46,14 @@ router.get(
 router.post(
   '/',
   validatorHandler(createEmpleadoSchema, 'body'),
-  async (req, res) => {
-    const body = req.body;
-    const nuevoEmpleado = await service.create(body);
-    res.json(nuevoEmpleado);
+  async (req, res, next) => {
+    try {
+      const body = req.body;
+      const nuevoEmpleado = await service.create(body);
+      res.json(nuevoEmpleado);
+    } catch (error) {
+      next(error);
+    }
   }
 );
 
@@ -54,16 +63,14 @@ router.patch(
   '/:id',
   validatorHandler(getEmpleadoSchema, 'params'),
   validatorHandler(updateEmpleadoSchema, 'body'),
-  async (req, res) => {
+  async (req, res, next) => {
     try {
       const { id } = req.params;
       const body = req.body;
       const empleado = await service.update(id, body);
       res.json(empleado);
     } catch (error) {
-      res.status(404).json({
-        Message: error.message,
-      });
+      next(error);
     }
   }
 );
@@ -73,10 +80,14 @@ router.patch(
 router.delete(
   '/:id',
   validatorHandler(getEmpleadoSchema, 'params'),
-  async (req, res) => {
-    const { id } = req.params;
-    const rta = await service.delete(id);
-    res.json(rta);
+  async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      await service.delete(id);
+      res.status(201).json({ id });
+    } catch (error) {
+      next(error);
+    }
   }
 );
 
