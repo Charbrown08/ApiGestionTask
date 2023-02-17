@@ -1,36 +1,22 @@
 const faker = require('faker');
 const boom = require('@hapi/boom');
+const getConnection=require('../libs/postgres');
+
+
 
 class empleadosService {
-  constructor() {
-    this.empleados = [];
-    this.generate();
-  }
 
-  generate() {
-    const limit = 100;
-    for (let index = 0; index < limit; index++) {
-      this.empleados.push({
-        id: faker.datatype.uuid(),
-        nombre: faker.commerce.productName(),
-        fecha_ingreso: parseInt(faker.commerce.price(), 10),
-        salario: parseInt(faker.commerce.price(), 10),
-      });
-    }
-  }
+  constructor() { }
+
 
   async create(data) {
-    const nuevoEmpleado = {
-      id:faker.datatype.uuid(),
-      ...data,
-    };
-
-    this.empleados.push(nuevoEmpleado);
-    return nuevoEmpleado;
+    return data;
   }
 
-  async findAll() {
-    return this.empleados;
+  async find() {
+    const client = await getConnection();
+    const rta=await client.query('SELECT * FROM public.empleados');
+    return rta.rows;
   }
 
   async findOne(id) {

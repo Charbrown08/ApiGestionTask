@@ -17,7 +17,7 @@ const service = new empleadosService();
 
 router.get('/', async (req, res,next) => {
   try{
-    const empleados = await service.findAll();
+    const empleados = await service.find();
     res.json(empleados);
   }catch(error){
     next(error);

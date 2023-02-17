@@ -1,8 +1,8 @@
 const Joi= require('joi');
 
-const id = Joi.string().uuid(); //  podemos cambiarlo a number()
+const id = Joi.number().integer(); //  podemos cambiarlo a number()
 const nombre=Joi.string();
-const fecha_ingreso=Joi.number().integer();
+const fecha_ingreso=Joi.date();
 const salario=Joi.number().integer();
 
 
