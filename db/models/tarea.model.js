@@ -1,14 +1,14 @@
-const { Field } = require('pg-protocol/dist/messages');
-const { Model, DataType, sequelize, DataTypes } = require('sequelize');
+
+const{Model,DataTypes,Sequelize}=require('sequelize');
 
 const TAREA_TABLE = 'tareas';
 
-const tareaSchema = {
+const TareaSchema = {
   id: {
-    allowNull: false,
-    autoIncrement: true,
-    primaryKey: true,
-    type: DataTypes.INTEGER,
+    allowNull:false,
+    autoIncrement:true,
+    primaryKey:true,
+    type:DataTypes.INTEGER
   },
   nombre: {
     allowNull: false,
@@ -17,7 +17,7 @@ const tareaSchema = {
   fecha_creacion: {
     allowNull: false,
     type: DataTypes.DATE,
-    defaultValue:DataTypes.NOW,
+    defaultValue:Sequelize.NOW
   },
   fecha_inicio_tarea: {
     allowNull: false,
@@ -29,21 +29,19 @@ const tareaSchema = {
   },
   id_empleado: {
     allowNull: false,
-    autoIncrement: true,
+
     type: DataTypes.INTEGER,
   },
 
   id_estado: {
     allowNull: false,
-    autoIncrement: true,
+
     type: DataTypes.INTEGER,
   }
 };
 
 class Tarea extends Model{
-  static associate(){
-
-  }
+  static associate(){}
 
   static config(sequelize){
     return {
@@ -58,4 +56,4 @@ class Tarea extends Model{
 
 }
 
-module.exports = {TAREA_TABLE,tareaSchema,Tarea};
+module.exports = {TAREA_TABLE,TareaSchema,Tarea};
