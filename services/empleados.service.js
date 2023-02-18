@@ -1,12 +1,17 @@
 const faker = require('faker');
 const boom = require('@hapi/boom');
-const getConnection=require('../libs/postgres');
+const getConnection=require('../libs/postgres');//sin pool
+
+const pool=require('../libs/postgres.pool');
 
 
 
 class empleadosService {
 
-  constructor() { }
+  constructor() {
+    this.pool=pool;
+    this.pool.on('error',(err)=>console.error(err));
+   }
 
 
   async create(data) {
@@ -14,8 +19,8 @@ class empleadosService {
   }
 
   async find() {
-    const client = await getConnection();
-    const rta=await client.query('SELECT * FROM public.empleados');
+    const query='SELECT * FROM empleados';
+    const rta=await this.pool.query(query);
     return rta.rows;
   }
 

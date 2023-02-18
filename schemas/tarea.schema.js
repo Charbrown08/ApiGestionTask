@@ -2,13 +2,13 @@ const { required } = require('joi');
 
 const Joi= require('joi');
 
-const id = Joi.string().uuid(); //  podemos cambiarlo a number()
+const id = Joi.number().integer(); //  podemos cambiarlo a number()
 const nombre=Joi.string();
-const fecha_creacion=Joi.number().integer();
-const fecha_inicio_tarea=Joi.number().integer();
-const fecha_finalizacion_tarea=Joi.number().integer();
-const id_empleado = Joi.string().uuid();
-const id_estado = Joi.string().uuid();
+const fecha_creacion=Joi.date().timestamp()
+const fecha_inicio_tarea=Joi.date();
+const fecha_finalizacion_tarea=Joi.date();
+const id_empleado = Joi.number().integer();
+const id_estado = Joi.number().integer();
 
 
 
