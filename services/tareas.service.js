@@ -11,13 +11,18 @@ class tareasService {
 
 
   async create(data) {
-    const nuevaTarea= await  models.Tarea.create(data);
+
+    const nuevaTarea= await  models.Tarea.create(data,{
+      include:['empleado']
+    });
     return nuevaTarea;
 
   }
 
   async find() {
-    const rta = await models.Tarea.findAll();
+    const rta = await models.Tarea.findAll({
+      include:['empleado']
+    });
     return rta;
   }
 

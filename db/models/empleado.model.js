@@ -35,7 +35,13 @@ const EmpleadoSchema={
 }
 
 class Empleado extends Model{
-  static associate(){
+  static associate(models){
+
+    this.hasOne(models.Tarea,{
+      as:'tarea',
+      foreignKey:'id_empleado'
+    });
+
 
   }
   static config(sequelize){

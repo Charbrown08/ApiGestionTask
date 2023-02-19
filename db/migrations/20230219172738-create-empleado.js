@@ -9,7 +9,7 @@ module.exports = {
   },
 
   async down (queryInterface, Sequelize) {
-    await queryInterface.drop(EMPLEADO_TABLE);
+    await queryInterface.dropTable(EMPLEADO_TABLE);
   }
 
 };

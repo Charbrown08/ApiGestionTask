@@ -1,5 +1,6 @@
 
 const{Model,DataTypes,Sequelize}=require('sequelize');
+const { EMPLEADO_TABLE } = require('./empleado.model');
 
 const TAREA_TABLE = 'tareas';
 
@@ -28,10 +29,24 @@ const TareaSchema = {
     allowNull: false,
     type: DataTypes.DATEONLY,
   },
-  id_empleado: {
-    allowNull: false,
 
-    type: DataTypes.INTEGER,
+  id_empleado: {
+    field:'id_empleado',
+    allowNull:false,
+    type:DataTypes.INTEGER,
+    unique:true,
+    references:{
+      model:EMPLEADO_TABLE,
+      key:'id'
+    },
+
+    onUpdate:'CASCADE',
+    onDelete:'SET NULL'
+
+
+
+
+
   },
 
   id_estado: {
@@ -41,7 +56,10 @@ const TareaSchema = {
 };
 
 class Tarea extends Model{
-  static associate(){}
+  static associate(models){
+    this.belongsTo(models.Empleado,{as:'empleado',foreignKey:'id_empleado'});
+
+  }
 
   static config(sequelize){
     return {

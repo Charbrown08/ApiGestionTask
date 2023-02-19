@@ -5,5 +5,8 @@ function setupModels(sequelize) {
   Tarea.init(TareaSchema,Tarea.config(sequelize));
   Empleado.init(EmpleadoSchema,Empleado.config(sequelize));
 
+  Empleado.associate(sequelize.models);
+  Tarea.associate(sequelize.models);
+
 }
 module.exports = setupModels;

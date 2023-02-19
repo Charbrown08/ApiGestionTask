@@ -17,7 +17,9 @@ class empleadosService {
   }
 
   async find() {
-    const rta = await models.Empleado.findAll();
+    const rta = await models.Empleado.findAll({
+      include:['tarea']
+    });
     return rta;
   }
 
