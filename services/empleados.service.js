@@ -1,59 +1,49 @@
-const faker = require('faker');
 const boom = require('@hapi/boom');
-const getConnection=require('../libs/postgres');//sin pool
+const { Empleado } = require('../db/models/empleado.model');
+const { Tarea } = require('../db/models/tarea.model');
 
-const pool=require('../libs/postgres.pool');
+const {models} = require('./../libs/sequelize');
 
 
 
 class empleadosService {
 
-  constructor() {
-    this.pool=pool;
-    this.pool.on('error',(err)=>console.error(err));
-   }
+  constructor() { }
 
 
   async create(data) {
-    return data;
+    const nuevoEmpleado= await  models.Empleado.create(data);
+    return nuevoEmpleado;
   }
 
   async find() {
-    const query='SELECT * FROM empleados';
-    const rta=await this.pool.query(query);
-    return rta.rows;
+    const rta = await models.Empleado.findAll();
+    return rta;
   }
 
   async findOne(id) {
-    const empleado=this.empleados.find((item) => item.id === id);
+
+    const empleado= await models.Empleado.findByPk(id);
     if(!empleado){
-      throw boom.notFound(' id empleado no enontrado')
+      throw boom.notFound('Empleado no encontrado');
     }
-    return empleado
+
+    return empleado;
+
 
   }
 
   async update(id, changes) {
-    const index = this.empleados.findIndex((item) => item.id === id);
-    if (index === -1) {
-      throw boom.notFound('Empleado no encontrado zz');
-    }
-    const empleado = this.empleados[index];
-    this.empleados[index] = {
-      ...empleado,
-      ...changes,
-    };
-
-    return this.empleados[index];
+    const empleado= await this.findOne(id);
+    const rta= await empleado.update(changes);
+    return rta;
   }
 
   async delete(id) {
-    const index = this.empleados.findIndex(item => item.id === id);
-    if (index === -1) {
-      throw boom.notFound('product not found');
-    }
-    this.empleados.splice(index, 1);
-    return { id };
+    const empleado= await this.findOne(id);
+    await empleado.destroy();
+
+    return {id};
   }
 
 }

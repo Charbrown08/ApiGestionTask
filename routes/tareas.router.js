@@ -5,7 +5,7 @@ const tareasService = require('./../services/tareas.service');
 const validatorHandler = require('../middlewares/validator.handler');
 const {
   createTareaSchema,updateTareaSchema,getTareaSchema
-} = require('../schemas/tarea.schema');
+} = require('./../schemas/tarea.schema');
 
 const service = new tareasService();
 

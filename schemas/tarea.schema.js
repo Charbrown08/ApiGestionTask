@@ -20,7 +20,7 @@ const createTareaSchema = Joi.object({
   fecha_inicio_tarea:fecha_inicio_tarea.required(),
   fecha_finalizacion_tarea:fecha_finalizacion_tarea.required(),
   id_empleado:id_empleado.required(),
-  id_estado:id_estado.required
+  id_estado:id_estado.required()
 
 
 

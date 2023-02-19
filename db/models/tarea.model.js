@@ -13,6 +13,7 @@ const TareaSchema = {
   nombre: {
     allowNull: false,
     type: DataTypes.STRING,
+    unique:true,
   },
   fecha_creacion: {
     allowNull: false,
@@ -35,7 +36,6 @@ const TareaSchema = {
 
   id_estado: {
     allowNull: false,
-
     type: DataTypes.INTEGER,
   }
 };
