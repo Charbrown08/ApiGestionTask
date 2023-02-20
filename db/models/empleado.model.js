@@ -12,17 +12,10 @@ const EmpleadoSchema={
   nombre: {
     allowNull: false,
     type: DataTypes.STRING,
-    unique: true,
+    unique: false,
   },
 
-  role:{
-    allowNull: false,
-    type: DataTypes.STRING,
-    defaultValue: 'trabajador'
-
-  },
-
-  fecha_ingreso:{
+   fecha_ingreso:{
     allowNull: false,
     type: DataTypes.DATEONLY,
 
@@ -36,10 +29,10 @@ const EmpleadoSchema={
 
 class Empleado extends Model{
   static associate(models){
-
-    this.hasOne(models.Tarea,{
-      as:'tarea',
+    this.hasMany(models.Tarea,{
+      as:'tareas',
       foreignKey:'id_empleado'
+
     });
 
 

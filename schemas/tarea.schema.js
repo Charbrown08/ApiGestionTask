@@ -12,7 +12,7 @@ const id_estado = Joi.number().integer();
 
 const fecha_ingreso=Joi.date();
 const salario=Joi.number().integer();
-const role=Joi.string();
+
 
 
 // Schema endpoints
@@ -22,17 +22,8 @@ const createTareaSchema = Joi.object({
   fecha_creacion:fecha_creacion.required(),
   fecha_inicio_tarea:fecha_inicio_tarea.required(),
   fecha_finalizacion_tarea:fecha_finalizacion_tarea.required(),
-  empleado:Joi.object({
-    nombre:nombre.required(),
-    fecha_ingreso:fecha_ingreso.required(),
-    salario:salario.required(),
-    role:role.required(),
-  }),
-
-
-
-
-  id_estado:id_estado.required()
+  id_empleado:id_empleado.required(),
+  id_estado:id_estado.required(),
 
 
 

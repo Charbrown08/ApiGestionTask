@@ -1,6 +1,4 @@
 const boom = require('@hapi/boom');
-const { Empleado } = require('../db/models/empleado.model');
-const { Tarea } = require('../db/models/tarea.model');
 
 const {models} = require('./../libs/sequelize');
 
@@ -17,9 +15,7 @@ class empleadosService {
   }
 
   async find() {
-    const rta = await models.Empleado.findAll({
-      include:['tarea']
-    });
+    const rta = await models.Empleado.findAll();
     return rta;
   }
 

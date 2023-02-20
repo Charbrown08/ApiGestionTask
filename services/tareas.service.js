@@ -20,10 +20,9 @@ class tareasService {
   }
 
   async find() {
-    const rta = await models.Tarea.findAll({
-      include:['empleado']
-    });
-    return rta;
+    const tareas= await models.Tarea.findAll();
+    return tareas;
+
   }
 
   async findOne(id) {

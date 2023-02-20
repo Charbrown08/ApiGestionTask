@@ -34,7 +34,6 @@ const TareaSchema = {
     field:'id_empleado',
     allowNull:false,
     type:DataTypes.INTEGER,
-    unique:true,
     references:{
       model:EMPLEADO_TABLE,
       key:'id'
@@ -57,7 +56,9 @@ const TareaSchema = {
 
 class Tarea extends Model{
   static associate(models){
-    this.belongsTo(models.Empleado,{as:'empleado',foreignKey:'id_empleado'});
+
+    this.belongsTo(models.Empleado,{as:'empleado',foreignKey: 'id_empleado'})
+
 
   }
 
