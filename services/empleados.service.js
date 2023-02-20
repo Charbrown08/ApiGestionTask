@@ -21,7 +21,9 @@ class empleadosService {
 
   async findOne(id) {
 
-    const empleado= await models.Empleado.findByPk(id);
+    const empleado= await models.Empleado.findByPk(id,{
+      include:['tareas']
+    });
     if(!empleado){
       throw boom.notFound('Empleado no encontrado');
     }

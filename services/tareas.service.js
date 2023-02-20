@@ -12,9 +12,7 @@ class tareasService {
 
   async create(data) {
 
-    const nuevaTarea= await  models.Tarea.create(data,{
-      include:['empleado']
-    });
+    const nuevaTarea= await  models.Tarea.create(data);
     return nuevaTarea;
 
   }
@@ -26,7 +24,9 @@ class tareasService {
   }
 
   async findOne(id) {
-    const tarea= await models.Tarea.findByPk(id);
+    const tarea= await models.Tarea.findByPk(id,{
+      include:['empleado','estado']
+    });
     if(!tarea){
       throw boom.notFound('Tarea no encontrada');
     }
