@@ -10,8 +10,10 @@ const fecha_finalizacion_tarea=Joi.date();
 const id_empleado = Joi.number().integer();
 const id_estado = Joi.number().integer();
 
-const fecha_ingreso=Joi.date();
-const salario=Joi.number().integer();
+// const fecha_ingreso=Joi.date();
+// const salario=Joi.number().integer();
+
+
 
 
 
@@ -45,6 +47,7 @@ const getTareaSchema = Joi.object({
   id:id.required(),
 
 })
+
 
 
 

@@ -18,7 +18,10 @@ class tareasService {
   }
 
   async find() {
-    const tareas= await models.Tarea.findAll();
+    const tareas= await models.Tarea.findAll({
+      // offset:0,
+      // limit:4
+    });
     return tareas;
 
   }

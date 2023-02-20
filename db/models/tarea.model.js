@@ -66,8 +66,8 @@ const TareaSchema = {
 class Tarea extends Model{
   static associate(models){
 
-    this.belongsTo(models.Empleado,{as:'empleado',foreignKey: 'id_empleado'});
-    this.belongsTo(models.Estado,{as:'estado',foreignKey: 'id_estado'});
+    this.belongsTo(models.Empleado,{as:'empleado',foreignKey: 'id_empleado'}),
+    this.belongsTo(models.Estado,{as:'estado',foreignKey: 'id_estado'})
 
 
   }
