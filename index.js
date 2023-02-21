@@ -2,7 +2,7 @@ const express=require('express');
 const routerApi=require('./routes');
 const {logErrors,errorHandler,boomErrorHandler,ormErrorHandler}=require('./middlewares/error.handler');
 const cors=require('cors');
-const {checkApiKey}=require('./middlewares/auth.handler');
+
 
 
 
@@ -18,9 +18,6 @@ app.get('/',(req,res)=>{
   res.send('Bienvenido al servidor');
 });
 
-app.get('/nueva-ruta',checkApiKey,(req,res)=>{
-  res.send('Hola nueva ruta');
-});
 
 
 
