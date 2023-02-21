@@ -10,6 +10,10 @@ const fecha_finalizacion_tarea=Joi.date();
 const id_empleado = Joi.number().integer();
 const id_estado = Joi.number().integer();
 
+
+// paramentros opcionales
+const categoria= Joi.string();
+
 // const fecha_ingreso=Joi.date();
 // const salario=Joi.number().integer();
 
@@ -21,7 +25,7 @@ const id_estado = Joi.number().integer();
 
 const createTareaSchema = Joi.object({
   nombre: nombre.required(),
-  fecha_creacion:fecha_creacion.required(),
+  //fecha_creacion:fecha_creacion,
   fecha_inicio_tarea:fecha_inicio_tarea.required(),
   fecha_finalizacion_tarea:fecha_finalizacion_tarea.required(),
   id_empleado:id_empleado.required(),
@@ -48,7 +52,11 @@ const getTareaSchema = Joi.object({
 
 })
 
+const queryTareaSchema = Joi.object({
+  categoria:categoria.required(),
+});
 
 
 
-module.exports ={createTareaSchema,updateTareaSchema,getTareaSchema}
+
+module.exports ={createTareaSchema,updateTareaSchema,getTareaSchema,queryTareaSchema}

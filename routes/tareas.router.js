@@ -4,7 +4,7 @@ const tareasService = require('./../services/tareas.service');
 
 const validatorHandler = require('../middlewares/validator.handler');
 const {
-  createTareaSchema,updateTareaSchema,getTareaSchema
+  createTareaSchema,updateTareaSchema,getTareaSchema,queryTareaSchema
 } = require('./../schemas/tarea.schema');
 
 const service = new tareasService();
@@ -39,6 +39,24 @@ async (req, res,next)=>{
 
 
 })
+
+
+
+// // GET CATEGORY
+// router.get('/',
+// validatorHandler(queryTareaSchema,'query'),
+// async (req, res,next)=>{
+//   try{
+//     const tarea= await service.findByCategoria(req.query);
+
+//     res.json(tarea);
+
+//   }catch(error){
+//     next(error);
+//   }
+
+
+// })
 
 
 // endpoint routes - create

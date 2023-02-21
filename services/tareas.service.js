@@ -29,30 +29,25 @@ class tareasService {
     return tarea;
   }
 
-  async findByCategoria(categoria) {
-    try {
-      const tarea = await models.Tarea.findOne({
-        include: [
-          {
-            model: models.Estado,
-            as:'estado',
-            where: { categoria },
-          },
-        ],
-      });
+  // // find byCategory
 
-      console.log(tarea);
-      return tarea?.dataValues
+  // async findByCategoria(query) {
+  //   const options = {
+  //     include:['estado'],
+  //     where:{}
+  //   }
 
-    } catch (error) {
-      console.error(error);
+  //   const {categoria}=query;
+  //   if(categoria){
+  //     options.where.categoria=categoria
 
-    }
+  //   }
+  //   const tarea=await models.Tarea.findOne(options);
+  //   return tarea;
+
+  // }
 
 
-
-
-  }
 
   async update(id, changes) {
     const tarea = await this.findOne(id);
@@ -70,7 +65,7 @@ class tareasService {
 
 }
 
-new tareasService().findByCategoria('DESARROLLO').then((tarea) => console.log(tarea))
+
 
 
 
