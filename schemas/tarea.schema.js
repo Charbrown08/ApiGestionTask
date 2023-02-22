@@ -5,8 +5,8 @@ const Joi= require('joi');
 const id = Joi.number().integer(); //  podemos cambiarlo a number()
 const nombre=Joi.string();
 const fecha_creacion=Joi.date().timestamp()
-const fecha_inicio_tarea=Joi.date();
-const fecha_finalizacion_tarea=Joi.date();
+const fecha_inicio_tarea=Joi.date().raw();
+const fecha_finalizacion_tarea=Joi.date().raw();
 const id_empleado = Joi.number().integer();
 const id_estado = Joi.number().integer();
 
@@ -21,7 +21,7 @@ const id_estado = Joi.number().integer();
 
 const createTareaSchema = Joi.object({
   nombre: nombre.required(),
-  fecha_creacion:fecha_creacion.required(),
+  fecha_creacion:fecha_creacion.optional(),
   fecha_inicio_tarea:fecha_inicio_tarea.required(),
   fecha_finalizacion_tarea:fecha_finalizacion_tarea.required(),
   id_empleado:id_empleado.required(),

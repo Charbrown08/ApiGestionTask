@@ -1,9 +1,10 @@
+const { options } = require('joi');
 const Joi= require('joi');
 
 const id = Joi.number().integer(); //  podemos cambiarlo a number()
-const nombre=Joi.string();
+const nombre=Joi.string().alphanum();
 const fecha_ingreso=Joi.date();
-const salario=Joi.number().integer();
+const salario=Joi.number().integer().positive();
 
 
 
@@ -16,6 +17,8 @@ const createEmpleadoSchema = Joi.object({
 
 
 })
+
+
 
 const updateEmpleadoSchema = Joi.object({
   nombre: nombre,
