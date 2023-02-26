@@ -27,6 +27,19 @@ const getEstadoSchema = Joi.object({
 
 })
 
+queryEstadoSchema=Joi.object({
+  categoria,
 
 
-module.exports ={createEstadoSchema,getEstadoSchema}
+})
+
+const categoriaEstadoSchema = Joi.object({
+  categoria:categoria.required()
+}
+)
+
+
+
+
+
+module.exports ={createEstadoSchema,getEstadoSchema,categoriaEstadoSchema,queryEstadoSchema}

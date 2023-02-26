@@ -21,7 +21,7 @@ const service = new estadoService();
 
 //endpoint routes - finAll
 
-router.get('/', async (req, res,next) => {
+router.get('/es', async (req, res,next) => {
   try{
     const estados = await service.find();
     res.json(estados);
@@ -47,4 +47,12 @@ router.get(
   }
 );
 
+
+
+// //FIND CATEGFORIES
+// router.get('/cat/:categoria',(req,res) => {
+//   const {categoria}=req.params;
+//   const estado= service.findByCategoria(categoria);
+//   res.json(estado);
+// })
 module.exports= router;

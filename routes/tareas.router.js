@@ -24,6 +24,39 @@ router.get('/',async (req, res,next)=>{
 })
 
 
+//FIND CATEGFORIES
+
+//endpoint routes - finAll
+
+// router.get('/esi', async (req, res,next) => {
+//   try{
+//     const tareas = await service.findCategoria();
+//     res.json(tareas);
+//   }catch(error){
+//     next(error);
+//   }
+
+// });
+
+
+
+//FIND CATEGFORIES
+
+//endpoint routes - finAll
+
+router.get('/esi',
+validatorHandler(queryTareaSchema,'query'),
+  async (req, res,next) => {
+  try{
+    const tareas = await service.findCategoria(req.query);
+    res.json(tareas);
+  }catch(error){
+    next(error);
+  }
+
+});
+
+
 // endpoint routes - findOne
 router.get('/:id',
 validatorHandler(getTareaSchema,'params'),
@@ -42,21 +75,7 @@ async (req, res,next)=>{
 
 
 
-// // GET CATEGORY
-// router.get('/',
-// validatorHandler(queryTareaSchema,'query'),
-// async (req, res,next)=>{
-//   try{
-//     const tarea= await service.findByCategoria(req.query);
 
-//     res.json(tarea);
-
-//   }catch(error){
-//     next(error);
-//   }
-
-
-// })
 
 
 // endpoint routes - create
@@ -110,5 +129,22 @@ async (req, res,next)=>{
   }
 
 })
+
+
+//FIND CATEGFORIES
+
+//endpoint routes - finAll
+
+// router.get('/esi', async (req, res,next) => {
+//   try{
+//     const tareas = await service.findCategoria();
+//     res.json(tareas);
+//   }catch(error){
+//     next(error);
+//   }
+
+// });
+
+
 
 module.exports =router;

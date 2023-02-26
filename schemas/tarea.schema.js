@@ -29,7 +29,7 @@ const createTareaSchema = Joi.object({
   fecha_inicio_tarea:fecha_inicio_tarea.required(),
   fecha_finalizacion_tarea:fecha_finalizacion_tarea.required(),
   id_empleado:id_empleado.required(),
-  id_estado:id_estado.required(),
+
 
 
 
@@ -53,8 +53,25 @@ const getTareaSchema = Joi.object({
 })
 
 const queryTareaSchema = Joi.object({
-  categoria:categoria.required(),
+  categoria,
 });
+
+const idEstadoConditionSchema= Joi.object({
+  // id_estado:id_estado.required().when('id_estado',{
+  //   switch: [
+  //     { is: 0, then: Joi.valid(1) },
+  //     { is: 1, then: Joi.valid(2) },
+  //     { is: 2, then: Joi.valid(3) }
+  // ],
+  // otherwise: Joi.valid(4)
+  // })
+
+
+
+
+});
+
+
 
 
 

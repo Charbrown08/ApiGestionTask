@@ -3,23 +3,17 @@ const boom= require('@hapi/boom');
 const {models}= require('./../libs/sequelize')
 
 class estadoService{
-  constructor(){
 
-  }
-
-  async create(data){
-    const nuevoEstado= await models.create(data);
-    return nuevoEstado;
-
-
-
-  }
+  //FIND ALL CATEGORIES
 
   async find() {
     const estados= await models.Estado.findAll();
     return estados;
 
   }
+
+
+  // FINONE ESTADO
 
   async findOne(id) {
     const estado= await models.Estado.findByPk(id,{
@@ -32,6 +26,7 @@ class estadoService{
     return estado;
 
   }
+
 
 
 }

@@ -52,6 +52,7 @@ const TareaSchema = {
   id_estado: {
     field:'id_estado',
     allowNull:false,
+    defaultValue:1,
     type:DataTypes.INTEGER,
     references:{
       model:ESTADO_TABLE,

@@ -1,4 +1,7 @@
 const boom = require('@hapi/boom');
+const { required } = require('joi');
+const { Estado } = require('../db/models/estado.model');
+const sequelize = require('./../libs/sequelize');
 
 const { models } = require('./../libs/sequelize');
 
@@ -15,6 +18,47 @@ class tareasService {
       // offset:0,
       // limit:4
     });
+    return tareas;
+  }
+
+  //FIND ALL CATEGORIES
+
+  //  async findCategoria() {
+  //   const tareas= await models.Tarea.findAll({
+  //     include: {
+  //       model: Estado,
+  //       as: 'estado',
+  //       attributes:['categoria'],
+  //       where:{
+  //         categoria:['DESARROLLO']
+
+  //       }
+
+  //      }
+  //     });
+  //   return tareas;
+
+  // }
+
+  async findCategoria(query) {
+    const options = {
+      include: {
+        model: Estado,
+        as: 'estado',
+        attributes: ['categoria'],
+        where: {
+          // categoria: ['DESARROLLO'],
+        },
+      },
+    }
+
+    const {categoria}=query;
+
+    if(categoria){
+      options.include.where.categoria=categoria;
+    }
+
+    const tareas = await models.Tarea.findAll(options);
     return tareas;
   }
 
@@ -47,10 +91,9 @@ class tareasService {
 
   // }
 
-
-
   async update(id, changes) {
     const tarea = await this.findOne(id);
+
     const rta = await tarea.update(changes);
     return rta;
   }
@@ -61,13 +104,6 @@ class tareasService {
 
     return { id };
   }
-
-
 }
-
-
-
-
-
 
 module.exports = tareasService;
