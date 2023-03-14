@@ -19,6 +19,12 @@ const EstadoSchema={
     allowNull: false,
     type: DataTypes.STRING,
     unique: false,
+  },
+  cambiosPermitidos: {
+    allowNull:true,
+    type:DataTypes.STRING,
+    unique:false
+
   }
 
 

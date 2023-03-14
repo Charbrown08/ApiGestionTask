@@ -21,7 +21,7 @@ const service = new estadoService();
 
 //endpoint routes - finAll
 
-router.get('/es', async (req, res,next) => {
+router.get('/', async (req, res,next) => {
   try{
     const estados = await service.find();
     res.json(estados);

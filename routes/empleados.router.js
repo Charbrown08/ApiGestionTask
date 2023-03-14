@@ -5,8 +5,8 @@ const empleadosService = require('../services/empleados.service');
 const validatorHandler = require('../middlewares/validator.handler');
 const {
   createEmpleadoSchema,
-  updateEmpleadoSchema,
-  getEmpleadoSchema,
+   getEmpleadoSchema,
+  update2EmpleadoSchema
 } = require('../schemas/empleado.schema');
 
 //instance of service
@@ -62,7 +62,7 @@ router.post(
 router.patch(
   '/:id',
   validatorHandler(getEmpleadoSchema, 'params'),
-  validatorHandler(updateEmpleadoSchema, 'body'),
+  validatorHandler(update2EmpleadoSchema,'body'),
   async (req, res, next) => {
     try {
       const { id } = req.params;

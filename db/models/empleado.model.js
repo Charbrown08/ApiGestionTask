@@ -15,6 +15,13 @@ const EmpleadoSchema={
     unique: false,
   },
 
+  rol:{
+    allowNull: false,
+    type: DataTypes.STRING,
+
+
+  },
+
    fecha_ingreso:{
     allowNull: false,
     type: DataTypes.DATEONLY,
@@ -23,7 +30,22 @@ const EmpleadoSchema={
   salario:{
     allowNull: false,
     type:DataTypes.FLOAT,
+    defaultValue:100,
+
+  },
+  pass:{
+    allowNull: false,
+    type:DataTypes.STRING,
+
+  },
+  email:{
+    allowNull: false,
+    type:DataTypes.STRING,
+    defaultValue:"@mail.example.com",
+    unique: true,
+
   }
+
 
 }
 
